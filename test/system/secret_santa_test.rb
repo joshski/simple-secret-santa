@@ -14,7 +14,7 @@ class SecretSantaTest < ApplicationSystemTestCase
     click_button 'Start'
 
     # Then I see the game has started
-    assert_selector 'h1', 'The elves have chosen!'
+    assert_selector 'h1', text: 'The elves have chosen!'
     share_url = page.url
 
     # And I see nobody has seen who to buy a present for
