@@ -1,0 +1,15 @@
+<h1>Are you sure you are <%= @player.name %>?</h1>
+
+<p>
+  If you say you are <%= @player.name %> but you are not really, the game is ruined for everybody!
+</p>
+
+<p>
+  <%= form_with(model: @player) do |f| %>
+    <%= f.submit "I am sure, I am definitely #{@player.name}" %>
+  <% end %>
+</p>
+
+<p>
+  <%= link_to "Actually sorry, I am not #{@player.name}", @player.game %>
+</p>

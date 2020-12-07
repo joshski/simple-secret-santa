@@ -1,0 +1,18 @@
+<h1>Simple Secret Santa!</h1>
+
+<%= form_with(model: @game) do |f| %>
+
+  <% player_number = 0 %>
+
+  <%= f.fields_for :players do |fp| %>
+    <p>
+      <%= fp.label :name, "Person #{player_number += 1}" %>
+      <%= fp.text_field :name %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= f.submit 'Start' %>
+  </p>
+
+<% end %>

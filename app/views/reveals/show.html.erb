@@ -1,0 +1,15 @@
+<% if @reveal %>
+
+  <h1><%= @player.name %>, the elves have chosen...</h1>
+
+  <h2>You need to buy a present for <%= @player.recipient.name %>!</h2>
+
+  <p>Make sure you remember this! We will not tell you again...</p>
+
+<% else %>
+
+  <h1><%= @player.name %> was told who to buy a present for <%= time_ago_in_words(@player.revealed_at) %> ago</h1>
+
+  <p><%= @player.name %> will not be told again. Sorry!</p>
+
+<% end %>
