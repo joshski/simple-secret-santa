@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   def new
     @game = Game.new
-    5.times { @game.players.build }
+    10.times { @game.players.build }
   end
 
   def create
