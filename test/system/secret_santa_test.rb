@@ -7,7 +7,7 @@ class SecretSantaTest < ApplicationSystemTestCase
   test 'secret santa' do
     # When I start a game
     visit '/'
-    assert_selector 'h1', text: 'Simple Secret Santa!'
+    assert_selector 'h1', text: 'Secret Santa!'
     fill_in 'Person 1', with: 'Josh'
     fill_in 'Person 2', with: 'Rosie'
     fill_in 'Person 3', with: 'Ez'
