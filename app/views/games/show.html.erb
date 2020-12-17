@@ -3,9 +3,12 @@
 <% remaining_players = @game.players.select { |p| p.revealed_at.blank? } %>
 
 <% if remaining_players.any? %>
-  <p>
-    Share <a href="<%= request.url %>" class="url">this URL</a> with everyone and ask them to click one of the links below:
-  </p>
+
+  <% if remaining_players.size < @game.players.size %>
+    <p>
+      Share <a href="<%= request.url %>" class="url">this URL</a> with everyone and ask them to click one of the links below:
+    </p>
+  <% end %>
 
   <ul>
     <% remaining_players.each do |player| %>
@@ -24,9 +27,9 @@
 <ul>
   <% @game.players.each do |player| %>
     <% if player.revealed_at.present? %>
-      <li><%= player.name %> has seen who to buy a present for</li>
+      <li><%= player.name %> <strong>has seen</strong> who to buy a present for</li>
     <% else %>
-      <li><%= player.name %> has not seen who to buy a present for</li>
+      <li><%= player.name %> <strong>has not seen</strong> who to buy a present for</li>
     <% end %>
   <% end %>
 </ul>
