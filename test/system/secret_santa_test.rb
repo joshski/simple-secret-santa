@@ -18,9 +18,9 @@ class SecretSantaTest < ApplicationSystemTestCase
     share_url = page.current_url
 
     # And I see nobody has seen who to buy a present for
-    assert_selector '*', text: 'Josh has not seen who to buy a present for'
-    assert_selector '*', text: 'Ez has not seen who to buy a present for'
-    assert_selector '*', text: 'Rosie has not seen who to buy a present for'
+    assert_selector 'a', text: 'I am Josh'
+    assert_selector 'a', text: 'I am Ez'
+    assert_selector 'a', text: 'I am Rosie'
 
     # When I reveal who to buy a present for
     click_link 'I am Josh'
@@ -32,8 +32,8 @@ class SecretSantaTest < ApplicationSystemTestCase
     # Then everybody can see that I have seen who to buy a present for
     visit share_url
     assert_selector '*', text: 'Josh has seen who to buy a present for'
-    assert_selector '*', text: 'Ez has not seen who to buy a present for'
-    assert_selector '*', text: 'Rosie has not seen who to buy a present for'
+    assert_selector 'a', text: 'I am Ez'
+    assert_selector 'a', text: 'I am Rosie'
 
     # When everybody else reveals who to buy presents for
     visit share_url

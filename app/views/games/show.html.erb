@@ -1,10 +1,11 @@
 <h1>The elves have chosen!</h1>
 
+<% revealed_players = @game.players.select { |p| p.revealed_at.present? } %>
 <% remaining_players = @game.players.select { |p| p.revealed_at.blank? } %>
 
 <% if remaining_players.any? %>
 
-  <% if remaining_players.size < @game.players.size %>
+  <% if remaining_players.size > @game.players.size %>
     <p>
       Share <a href="<%= request.url %>" class="url">this URL</a> with everyone and ask them to click one of the links below:
     </p>
@@ -24,16 +25,14 @@
 
 <% else %>
 
-  <p>Everybody knows who to buy presents for...</p>
+  <p>Everybody knows who to buy presents for. Yay!</p>
 
 <% end %>
 
 <ul>
-  <% @game.players.each do |player| %>
+  <% revealed_players.each do |player| %>
     <% if player.revealed_at.present? %>
-      <li><%= player.name %> <strong>has seen</strong> who to buy a present for</li>
-    <% else %>
-      <li><%= player.name %> <strong>has not seen</strong> who to buy a present for</li>
+      <li><strong><%= player.name %></strong> has seen who to buy a present for</li>
     <% end %>
   <% end %>
 </ul>
